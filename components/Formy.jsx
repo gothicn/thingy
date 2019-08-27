@@ -8,7 +8,6 @@ const Formy = ({ loading, errors, sendData }) => {
         <Box
             align="center"
             round="xsmall"
-            height="large"
             width="medium"
             background="dark-2"
         >
@@ -17,15 +16,15 @@ const Formy = ({ loading, errors, sendData }) => {
             <Box width="medium" pad="small">
                 <Form
                     errors={errors}
-                    onSubmit={() => {
-                        sendData()
+                    onSubmit={({value}) => {
+                        sendData(value)
                     }}
                 >
                     <FormField name={'name'} placeholder="Кличка" />
                     <FormField name={'insta'} placeholder="Инстаграм" />
                     <FormField name={'pass'} placeholder="Пароль" />
                     <Box
-                        direction="row"
+                        direction="row-reverse"
                         justify="between"
                         margin={{ top: 'medium' }}
                     >
@@ -44,8 +43,8 @@ const Formy = ({ loading, errors, sendData }) => {
 export default connect(
     ({ errors, loading }) => ({ loading, errors }),
     dispatch => ({
-        sendData: () => {
-            dispatch(sendData())
+        sendData: data => {
+            dispatch(sendData(data))
         }
     })
 )(Formy)

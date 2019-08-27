@@ -1,7 +1,8 @@
 import { all, delay, put, takeLatest } from 'redux-saga/effects'
 
 import { actionTypes, failure } from './actions'
-function* loadDataSaga() {
+function* loadDataSaga(data) {
+    console.warn('app logs sweet data and throws it away', data)
     const errors = {
         name: ['слишком короткая', 'похожа на собачью'],
         insta: ['формат не верен'],
@@ -14,7 +15,6 @@ function* loadDataSaga() {
             return { ...acc, [key]: value.join(', ') }
         }, {})
     }
-    beautifyErrorObject(errors)
     yield put(failure(beautifyErrorObject(errors)))
 }
 

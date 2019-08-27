@@ -20,7 +20,7 @@ function reducer(state = exampleInitialState, action) {
         case actionTypes.LOAD_DATA: {
             return {
                 ...state,
-                ...{ loading: true }
+                ...{ loading: true, data: action.data }
             }
         }
 

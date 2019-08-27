@@ -10,6 +10,6 @@ export function failure(errors) {
     }
 }
 
-export function sendData() {
-    return { type: actionTypes.LOAD_DATA }
+export function sendData(data) {
+    return { type: actionTypes.LOAD_DATA, data }
 }
